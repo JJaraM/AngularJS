@@ -1,23 +1,34 @@
 app.controller('LoginController', function($scope, LoginService) {
 
+  $scope.user = {email: '', password: ''};
+
   $scope.init = function() {
-    $scope.user = {email: '', password: ''};
     $scope.error = false;
     $scope.errorMessage = '';
   }
 
   $scope.signIn = function() {
     $scope.init();
-    if ($scope.user.email.trim().length == 0) {
-      $scope.errorMessage = 'The email is required';
-      $scope.error = true;
-    } else if ($scope.user.password.trim().length == 0) {
-      $scope.errorMessage = 'The password is required';
-      $scope.error = true;
+    var error = $scope.validateField($scope.user.email, $scope.user.password);
+    if (!error.status) {
+      LoginService.signIn($scope.user.email, $scope.user.password);
+      $scope.init();
+    } else {
+      $scope.error = error.status;
+      $scope.errorMessage = error.message;
     }
-    if ($scope.error) {
-      //LoginService.signIn($scope.user.email, $scope.user.password);
+  }
+
+  $scope.validateField = function(email, password) {
+    var error = {status: false, message: ''};
+    if (email.trim().length == 0) {
+      error.message = 'The email is required';
+      error.status = true;
+    } else if (password.trim().length == 0) {
+      error.message = 'The password is required';
+      error.status = true;
     }
+    return error;
   }
 
   $scope.init();
