@@ -1,7 +1,7 @@
-app.service('LoginService', function () {
+app.service('LoginService', function ($http) {
   return {
     signIn: function(email, password) {
-      console.log("Success");
+      return $http.get('http://localhost:8080/application/api/user/signIn?email='+email+'&password='+password);
     }
   };
 })

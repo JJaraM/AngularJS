@@ -11,7 +11,13 @@ app.controller('LoginController', function($scope, LoginService) {
     $scope.init();
     var error = $scope.validateField($scope.user.email, $scope.user.password);
     if (!error.status) {
-      LoginService.signIn($scope.user.email, $scope.user.password);
+      LoginService.signIn($scope.user.email, $scope.user.password).then(function(response) {
+        if (response.status == 200) {
+          window.location.href = "dashboard.html";
+        }
+  		}, function(error) {
+
+  		});
       $scope.init();
     } else {
       $scope.error = error.status;
