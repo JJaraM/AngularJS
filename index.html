@@ -1,0 +1,41 @@
+<html ng-app="app">
+  <head>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container" ng-controller="LoginController as login">
+      <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="row">
+          <img src="images/logo.png" class="img-responsive" alt="Cinque Terre" style="width: 33%; margin: 0 auto;"/>
+        </div>
+        <div class="panel panel-default" >
+          <div class="panel-heading">
+            <div class="panel-title text-center">AngularJS Tutorial</div>
+          </div>
+          <div class="panel-body">
+            <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="user" type="text" class="form-control" name="user" value="" placeholder="User">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12 controls">
+                  <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i>Sign In</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
